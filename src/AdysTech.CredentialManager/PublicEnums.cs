@@ -7,7 +7,7 @@ namespace AdysTech.CredentialManager
         Certificate = 3
     }
 
-    public enum Persistance : uint
+    public enum Persistence : uint
     {
         Session = 1,
         LocalMachine = 2,

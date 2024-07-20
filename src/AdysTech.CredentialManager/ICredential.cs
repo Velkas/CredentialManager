@@ -15,13 +15,11 @@ namespace AdysTech.CredentialManager
         string Comment { get; set; }
         DateTime LastWritten { get; set; }
         string CredentialBlob { get; set; }
-        Persistance Persistance { get; set; }
+        Persistence Persistence { get; set; }
         IDictionary<string, Object> Attributes { get; set; }
         string UserName { get; set; }
-
         NetworkCredential ToNetworkCredential();
-        bool SaveCredential(bool AllowBlankPassword=false);
-
+        bool SaveCredential(bool allowBlankPassword=false);
         bool RemoveCredential();
     }
 }

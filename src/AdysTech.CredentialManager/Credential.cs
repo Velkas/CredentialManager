@@ -11,17 +11,14 @@ namespace AdysTech.CredentialManager
 {
     internal class Credential : ICredential
     {
-
         public CredentialType Type { get; set; }
         public string TargetName { get; set; }
         public string Comment { get; set; }
         public DateTime LastWritten { get; set; }
         public string CredentialBlob { get; set; }
-        public Persistance Persistance { get; set; }
+        public Persistence Persistence { get; set; }
         public IDictionary<string, Object> Attributes { get; set; }
         public string UserName { get; set; }
-
-
         public UInt32 Flags;
         public string TargetAlias;
 
@@ -64,7 +61,7 @@ namespace AdysTech.CredentialManager
             {
                 CredentialBlob = Marshal.PtrToStringUni(ncred.CredentialBlob, (int)ncred.CredentialBlobSize / 2);
             }
-            Persistance = (Persistance)ncred.Persist;
+            Persistence = (Persistence)ncred.Persist;
             var AttributeCount = ncred.AttributeCount;
             if (AttributeCount > 0)
             {
@@ -108,7 +105,7 @@ namespace AdysTech.CredentialManager
             Comment = null;
             TargetAlias = null;
             Type = CredentialType.Generic;
-            Persistance = Persistance.Session;
+            Persistence = Persistence.Session;
         }
 
         public Credential(ICredential credential)
@@ -126,7 +123,7 @@ namespace AdysTech.CredentialManager
             Comment = credential.Comment;
             TargetAlias = null;
             Type = credential.Type;
-            Persistance = credential.Persistance;
+            Persistence = credential.Persistence;
         }
 
         public Credential(string target, CredentialType type)
@@ -185,7 +182,7 @@ namespace AdysTech.CredentialManager
                 Comment = this.Comment,
                 TargetAlias = null,
                 Type = (UInt32)this.Type,
-                Persist = (UInt32)this.Persistance,
+                Persist = (UInt32)this.Persistence,
                 UserName = this.UserName,
                 TargetName = this.TargetName,
                 CredentialBlobSize = (UInt32)Encoding.Unicode.GetBytes(this.CredentialBlob).Length

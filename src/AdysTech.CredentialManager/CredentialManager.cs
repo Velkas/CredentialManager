@@ -249,21 +249,25 @@ namespace AdysTech.CredentialManager
         /// <param name="target">Name of the application/Url where the credential is used for</param>
         /// <param name="credential">Credential to store</param>
         /// <param name="type">Credential type</param>
+        /// <param name="persistence"><see cref="Persistence"/> level of the credential to store.</param>
+        /// <param name="allowNullPassword">Allow null passwords, otherwise returns null when null password is provided.</param>
         /// <returns>True:Success, throw if failed</returns>
-        public static ICredential SaveCredentials(string target, NetworkCredential credential, CredentialType type = CredentialType.Generic, bool AllowNullPassword= false)
+        public static ICredential SaveCredentials(
+            string target, 
+            NetworkCredential credential, 
+            CredentialType type = CredentialType.Generic, 
+            Persistence persistence = Persistence.Enterprise, 
+            bool allowNullPassword = false)
         {
             // Go ahead with what we have are stuff it into the CredMan structures.
             var cred = new Credential(credential)
             {
                 TargetName = target,
-                Persistance = Persistance.Enterprise,
+                Persistence = persistence,
                 Type = type
             };
-            if( cred.SaveCredential(AllowNullPassword))
-            {
-                return cred;
-            }
-            return null;
+            
+            return cred.SaveCredential(allowNullPassword) ? cred : null;
         }
 
         /// <summary>
