@@ -220,7 +220,6 @@ namespace CredentialManagerTest
                     Assert.IsNotNull(cred, "GetCredential failed");
                     Assert.IsTrue(usr == cred.UserName && pwd == cred.Password && dmn == cred.Domain, "Saved and retrieved data doesn't match");
                 }
-
             }
             catch (Exception e)
             {
@@ -470,7 +469,7 @@ namespace CredentialManagerTest
             try
             {
                 var cred = new NetworkCredential(uName, "", domain);
-                Assert.IsNotNull(CredentialManager.SaveCredentials("TestSystem_nullPwd", cred,AllowNullPassword:true), "SaveCredential failed");
+                Assert.IsNotNull(CredentialManager.SaveCredentials("TestSystem_nullPwd", cred,allowNullPassword:true), "SaveCredential failed");
             }
             catch (Exception e)
             {
