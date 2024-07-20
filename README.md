@@ -1,6 +1,5 @@
- [![Build status](https://ci.appveyor.com/api/projects/status/b6osdeuob7qeuivr?svg=true)](https://ci.appveyor.com/project/AdysTech/credentialmanager)
+Fork of the original. Recommended to build and test yourself. No guarantees of stability or function. See original repository [here](https://github.com/AdysTech/CredentialManager)
 
- 
 ### Nuget Package
 [AdysTech.CredentialManager](https://www.nuget.org/packages/AdysTech.CredentialManager/)
 
